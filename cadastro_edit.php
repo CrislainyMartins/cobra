@@ -8,7 +8,20 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
+
+
 <body>
+
+<?php 
+    include("conexao.php");
+    $id = $_GET["id"] ?? '';
+    $sql = "SELECT * FROM usuario WHERE id = $id";
+
+    $dados = mysqli_query($conexao,$sql);
+    $linha = mysqli_fetch_assoc($dados);
+    
+    
+    ?>
   
   <div class="container">
     <div class="coluna">

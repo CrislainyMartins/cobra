@@ -11,6 +11,11 @@
 <body>
     <?php 
     
+    include "conexao.php";
+    $pesquisa = $_POST['busca'] ?? '';
+    $sql = "SELECT * FROM usuario WHERE nome LIKE'%$pesquisa%'";
+    $dados = mysqli_query($conexao,$sql);
+    
     ?>
     
     <div class="container">
@@ -35,6 +40,10 @@
                         <tbody>
                             <?php 
                            
+                           while($linha = mysqli_fetch_assoc($dados)){
+                            $id = $linha['id'];
+                            $nome = $linha['nome'];
+                            $email = $linha['email'];
 
                                 echo "<tr>
                                 
@@ -47,7 +56,7 @@
 
                              </tr>";
 
-                             
+                           }
                             ?>
                         </tbody>
                     </table>
